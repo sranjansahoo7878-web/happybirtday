@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Happy Birthday Birthday Girl! 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a0a1e 0%, #2d1b36 25%, #1a0a1e 50%, #2d1b36 75%, #1a0a1e 100%);
+            background-size: 400% 400%;
+            animation: loveBg 7s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        @keyframes loveBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ===== FLOATING HEARTS ===== */
+        .hearts-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .heart-float {
+            position: absolute;
+            font-size: 18px;
+            opacity: 0.2;
+            animation: floatHeart linear infinite;
+            user-select: none;
+        }
+        @keyframes floatHeart {
+            0% { transform: translateY(105vh) rotate(0deg) scale(0.4); opacity: 0; }
+            10% { opacity: 0.25; }
+            90% { opacity: 0.25; }
+            100% { transform: translateY(-10vh) rotate(720deg) scale(1.3); opacity: 0; }
+        }
+
+        /* ===== SPARKLES ===== */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .sparkle span {
+            position: absolute;
+            display: block;
+            width: 4px;
+            height: 4px;
+            background: #ff6b9d;
+            border-radius: 50%;
+            animation: sparkleAnim 1.2s ease-out forwards;
+        }
+        @keyframes sparkleAnim {
+            0% { transform: translate(0,0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+            max-width: 700px;
+            padding: 40px 20px;
+        }
+
+        /* ===== TITLE ===== */
+        .title {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 40px rgba(255, 107, 157, 0.3);
+        }
+        .title span {
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b9d, #ff9a76);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* ===== CAKE PLATE ===== */
+        .cake-plate {
+            position: relative;
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        /* ===== CAKE ===== */
+        .cake {
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        .cake:hover {
+            transform: scale(1.02);
+        }
+
+        /* Cake Layers */
+        .cake-body {
+            position: relative;
+            width: 320px;
+            margin: 0 auto;
+        }
+
+        /* Bottom layer */
+        .layer-bottom {
+            width: 320px;
+            height: 65px;
+            background: linear-gradient(180deg, #f5a0b8, #e8829e);
+            border-radius: 8px 8px 4px 4px;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            margin: 0 auto;
+        }
+        .layer-bottom::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px 8px 0 0;
+        }
+
+        /* Middle layer */
+        .layer-middle {
+            width: 270px;
+            height: 55px;
+            background: linear-gradient(180deg, #ffb6c9, #f59ab3);
+            border-radius: 8px 8px 4px 4px;
+            margin: -6px auto 0;
+            position: relative;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+            z-index: 1;
+        }
+        .layer-middle::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px 8px 0 0;
+        }
+
+        /* Top layer */
+        .layer-top {
+            width: 220px;
+            height: 50px;
+            background: linear-gradient(180deg, #ffccd9, #ffaec4);
+            border-radius: 8px 8px 4px 4px;
+            margin: -6px auto 0;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+        .layer-top::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 8px 8px 0 0;
+        }
+
+        /* Frosting drips on top layer */
+        .frosting-drip {
+            position: absolute;
+            bottom: -4px;
+            left: 15px;
+            width: 12px;
+            height: 10px;
+            background: #ffccd9;
+            border-radius: 0 0 6px 6px;
+        }
+        .frosting-drip:nth-child(2) { left: 60px; height: 14px; width: 10px; }
+        .frosting-drip:nth-child(3) { left: 110px; height: 8px; width: 13px; }
+        .frosting-drip:nth-child(4) { left: 155px; height: 12px; width: 9px; }
+        .frosting-drip:nth-child(5) { left: 190px; height: 10px; width: 11px; }
+
+        /* ===== CANDLES ===== */
+        .candles {
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 22px;
+            z-index: 5;
+        }
+        .candle {
+            width: 10px;
+            height: 40px;
+            background: linear-gradient(180deg, #ffd700, #ffa500);
+            border-radius: 3px 3px 0 0;
+            position: relative;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+        .candle::after {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 7px;
+            height: 18px;
+            background: radial-gradient(circle, #fff5a0, #ffd700);
+            border-radius: 50%;
+            animation: flameFlicker 0.8s ease-in-out infinite alternate;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 200, 0, 0.3);
+        }
+        @keyframes flameFlicker {
+            0% { transform: translateX(-50%) scaleY(1) scaleX(1); }
+            50% { transform: translateX(-50%) scaleY(1.15) scaleX(0.9); }
+            100% { transform: translateX(-50%) scaleY(0.95) scaleX(1.05); }
+        }
+        /* Candle stripes */
+        .candle::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 2px;
+            right: 2px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+        }
+
+        /* ===== CAKE DECORATIONS ===== */
+        .cake-deco {
+            position: absolute;
+            z-index: 3;
+            font-size: 18px;
+            pointer-events: none;
+        }
+        .deco-rose1 { top: 10px; left: 20px; font-size: 22px; }
+        .deco-rose2 { top: 12px; right: 20px; font-size: 20px; }
+        .deco-heart1 { top: 8px; left: 50%; transform: translateX(-50%); font-size: 26px; }
+
+        /* ===== KNIFE ===== */
+        .knife {
+            position: absolute;
+            top: -20px;
+            right: -90px;
+            font-size: 80px;
+            transform: rotate(-30deg);
+            cursor: grab;
+            user-select: none;
+            transition: transform 0.1s ease;
+            z-index: 10;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            touch-action: none;
+        }
+        .knife:active {
+            cursor: grabbing;
+        }
+        .knife.dragging {
+            transform: rotate(-20deg) scale(1.1);
+        }
+
+        /* ===== CUT EFFECT ===== */
+        .cut-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 8;
+            overflow: hidden;
+        }
+        .cut-line {
+            position: absolute;
+            top: 50%;
+            left: -10%;
+            width: 0%;
+            height: 3px;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 60px rgba(255,107,157,0.3);
+            border-radius: 2px;
+            transition: width 0.6s ease;
+        }
+        .cut-line.active {
+            width: 120%;
+        }
+
+        /* ===== BIRTHDAY GIRL REVEAL ===== */
+        .birthday-reveal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.8s ease;
+        }
+        .birthday-reveal.show {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .reveal-content {
+            text-align: center;
+            padding: 40px;
+            animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .reveal-content .big-cake {
+            font-size: 120px;
+            display: block;
+            margin-bottom: 20px;
+            animation: bounceCake 2s ease-in-out infinite;
+        }
+        @keyframes bounceCake {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .reveal-content h1 {
+            font-size: 4rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ff6b9d, #ff9a76, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .reveal-content .blessing {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        .reveal-content .hearts-burst {
+            font-size: 2rem;
+            letter-spacing: 8px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .reveal-content .btn-replay {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 40px;
+            border: 2px solid rgba(255, 107, 157, 0.4);
+            background: rgba(255, 107, 157, 0.1);
+            color: #ff6b9d;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        .reveal-content .btn-replay:hover {
+            background: #ff6b9d;
+            color: #fff;
+            border-color: #ff6b9d;
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.3);
+        }
+
+        /* ===== CONFETTI ===== */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99;
+            overflow: hidden;
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -20px;
+            animation: confettiFall linear forwards;
+        }
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ===== INSTRUCTION TEXT ===== */
+        .instruction {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            margin-top: 35px;
+            font-weight: 300;
+            animation: pulseText 2s ease-in-out infinite;
+        }
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .title { font-size: 1.8rem; }
+            .subtitle { font-size: 0.8rem; }
+            .layer-bottom { width: 260px; height: 55px; }
+            .layer-middle { width: 220px; height: 45px; }
+            .layer-top { width: 180px; height: 42px; }
+            .knife { font-size: 60px; right: -70px; top: -10px; }
+            .candles { gap: 16px; top: -45px; }
+            .candle { width: 8px; height: 32px; }
+            .cake-deco { font-size: 14px; }
+            .deco-rose1 { left: 12px; font-size: 18px; }
+            .deco-rose2 { right: 12px; font-size: 16px; }
+            .deco-heart1 { font-size: 20px; }
+            .reveal-content h1 { font-size: 2.8rem; }
+            .reveal-content .big-cake { font-size: 80px; }
+            .reveal-content .blessing { font-size: 1rem; }
+            .frosting-drip:nth-child(2) { left: 45px; }
+            .frosting-drip:nth-child(3) { left: 85px; }
+            .frosting-drip:nth-child(4) { left: 125px; }
+            .frosting-drip:nth-child(5) { left: 155px; }
+        }
+        @media (max-width: 400px) {
+            .layer-bottom { width: 210px; height: 45px; }
+            .layer-middle { width: 180px; height: 38px; }
+            .layer-top { width: 145px; height: 35px; }
+            .knife { font-size: 48px; right: -55px; }
+            .candles { gap: 12px; top: -38px; }
+            .candle { width: 6px; height: 28px; }
+            .reveal-content h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== FLOATING HEARTS ===== -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- ===== MAIN CONTAINER ===== -->
+    <div class="container">
+
+        <h1 class="title">Happy Birthday <span>Birthday Girl</span> 🎉</h1>
+        <p class="subtitle">✦ Touch the knife & drag to cut the cake ✦</p>
+
+        <div class="cake-plate">
+
+            <!-- CAKE -->
+            <div class="cake" id="cake">
+
+                <!-- Candles -->
+                <div class="candles">
+                    <div class="candle"></div>
+                    <div class="candle"></div>
+                    <div class="candle"></div>
+                    <div class="candle"></div>
+                    <div class="candle"></div>
+                </div>
+
+                <!-- Cake Body -->
+                <div class="cake-body">
+                    <!-- Top layer -->
+                    <div class="layer-top">
+                        <div class="frosting-drip"></div>
+                        <div class="frosting-drip"></div>
+                        <div class="frosting-drip"></div>
+                        <div class="frosting-drip"></div>
+                        <div class="frosting-drip"></div>
+                    </div>
+                    <!-- Middle layer -->
+                    <div class="layer-middle"></div>
+                    <!-- Bottom layer -->
+                    <div class="layer-bottom"></div>
+                </div>
+
+                <!-- Decorations -->
+                <span class="cake-deco deco-rose1">🌹</span>
+                <span class="cake-deco deco-rose2">🌹</span>
+                <span class="cake-deco deco-heart1">💕</span>
+
+                <!-- Cut Overlay -->
+                <div class="cut-overlay" id="cutOverlay">
+                    <div class="cut-line" id="cutLine"></div>
+                </div>
+            </div>
+
+            <!-- KNIFE -->
+            <div class="knife" id="knife">🔪</div>
+
+        </div>
+
+        <p class="instruction">💫 Drag the knife across the cake to cut it 💫</p>
+
+    </div>
+
+    <!-- ===== BIRTHDAY REVEAL OVERLAY ===== -->
+    <div class="birthday-reveal" id="birthdayReveal">
+        <div class="reveal-content">
+            <span class="big-cake">🎂</span>
+            <h1>🎉 Happy Birthday! 🎉</h1>
+            <p class="blessing">Happy Birthday, Birthday Girl! 💕<br>May your day be filled with love, joy, and endless smiles! and thank you dear for coming 
+            into my life and always giving me positive vibes" 
+             ..  ✨</p>
+            <div class="hearts-burst">💕 ❤️ 💕 ❤️ 💕</div>
+            <button class="btn-replay" onclick="resetCake()">🎊 Cut Again 🎊</button>
+        </div>
+    </div>
+
+    <!-- ===== CONFETTI CONTAINER ===== -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <script>
+        // ===== FLOATING HEARTS =====
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            const symbols = ['❤️', '💕', '💗', '💖', '💝', '♥️', '💓'];
+            for (let i = 0; i < 40; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-float';
+                heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (12 + Math.random() * 22) + 'px';
+                heart.style.animationDuration = (10 + Math.random() * 14) + 's';
+                heart.style.animationDelay = (Math.random() * 18) + 's';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // ===== SPARKLE EFFECT =====
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            const count = 8 + Math.floor(Math.random() * 6);
+            for (let i = 0; i < count; i++) {
+                const span = document.createElement('span');
+                const angle = (Math.PI * 2 / count) * i + Math.random() * 0.5;
+                const dist = 20 + Math.random() * 40;
+                span.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                span.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+                span.style.animationDuration = (0.6 + Math.random() * 0.6) + 's';
+                span.style.width = span.style.height = (2 + Math.random() * 4) + 'px';
+                span.style.background = ['#ff6b9d', '#ffd700', '#fff', '#ff9a76'][Math.floor(Math.random() * 4)];
+                sparkle.appendChild(span);
+            }
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1500);
+        }
+
+        // ===== KNIFE DRAG TO CUT =====
+        const knife = document.getElementById('knife');
+        const cake = document.getElementById('cake');
+        const cutLine = document.getElementById('cutLine');
+        const cutOverlay = document.getElementById('cutOverlay');
+        const birthdayReveal = document.getElementById('birthdayReveal');
+        const confettiContainer = document.getElementById('confettiContainer');
+
+        let isDragging = false;
+        let hasCut = false;
+        let cutProgress = 0;
+        let dragStartX = 0;
+
+        // Mouse events
+        knife.addEventListener('mousedown', startDrag);
+        document.addEventListener('mousemove', onDrag);
+        document.addEventListener('mouseup', endDrag);
+
+        // Touch events
+        knife.addEventListener('touchstart', startDragTouch, { passive: false });
+        document.addEventListener('touchmove', onDragTouch, { passive: false });
+        document.addEventListener('touchend', endDragTouch, { passive: false });
+
+        function startDrag(e) {
+            if (hasCut) return;
+            isDragging = true;
+            knife.classList.add('dragging');
+            dragStartX = e.clientX;
+            e.preventDefault();
+        }
+
+        function startDragTouch(e) {
+            if (hasCut) return;
+            isDragging = true;
+            knife.classList.add('dragging');
+            dragStartX = e.touches[0].clientX;
+            e.preventDefault();
+        }
+
+        function onDrag(e) {
+            if (!isDragging || hasCut) return;
+            const dx = e.clientX - dragStartX;
+            moveKnifeAndCut(dx);
+        }
+
+        function onDragTouch(e) {
+            if (!isDragging || hasCut) return;
+            const dx = e.touches[0].clientX - dragStartX;
+            moveKnifeAndCut(dx);
+            e.preventDefault();
+        }
+
+        function moveKnifeAndCut(dx) {
+            // Move knife horizontally with the drag
+            const maxKnifeMove = 80;
+            const knifeMove = Math.min(Math.max(dx * 0.5, 0), maxKnifeMove);
+            knife.style.transform = `rotate(-30deg) translateX(${knifeMove}px)`;
+
+            // Calculate cut progress
+            cutProgress = Math.min(dx / 350, 1);
+            if (cutProgress > 0) {
+                cutLine.style.width = (cutProgress * 120) + '%';
+                cutLine.classList.add('active');
+
+                // Sparks while cutting
+                if (Math.random() < 0.3) {
+                    const rect = cake.getBoundingClientRect();
+                    createSparkle(
+                        rect.left + rect.width * 0.3 + Math.random() * rect.width * 0.4,
+                        rect.top + rect.height * 0.35 + Math.random() * rect.height * 0.3
+                    );
+                }
+            }
+
+            // Complete the cut
+            if (cutProgress >= 1 && !hasCut) {
+                hasCut = true;
+                isDragging = false;
+                knife.classList.remove('dragging');
+                knife.style.cursor = 'default';
+                completeCut();
+            }
+        }
+
+        function endDrag() {
+            if (!hasCut && isDragging) {
+                // Snap back if not far enough
+                if (cutProgress < 0.3) {
+                    knife.style.transform = 'rotate(-30deg) translateX(0)';
+                    cutLine.style.width = '0%';
+                    cutLine.classList.remove('active');
+                }
+            }
+            isDragging = false;
+            knife.classList.remove('dragging');
+        }
+
+        function endDragTouch() {
+            if (!hasCut && isDragging) {
+                if (cutProgress < 0.3) {
+                    knife.style.transform = 'rotate(-30deg) translateX(0)';
+                    cutLine.style.width = '0%';
+                    cutLine.classList.remove('active');
+                }
+            }
+            isDragging = false;
+            knife.classList.remove('dragging');
+        }
+
+        // ===== COMPLETE CUT =====
+        function completeCut() {
+            // Show birthday reveal
+            birthdayReveal.classList.add('show');
+
+            // Fire confetti
+            launchConfetti();
+
+            // More sparkles
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const rect = cake.getBoundingClientRect();
+                    createSparkle(
+                        rect.left + Math.random() * rect.width,
+                        rect.top + Math.random() * rect.height
+                    );
+                }, i * 150);
+            }
+
+            // Play a little celebration sound effect idea (visual only)
+        }
+
+        // ===== CONFETTI =====
+        function launchConfetti() {
+            const colors = ['#ff6b9d', '#ffd700', '#ff9a76', '#ff1493', '#ff69b4', '#ffa07a', '#fff'];
+            for (let i = 0; i < 100; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                piece.style.left = Math.random() * 100 + '%';
+                piece.style.width = (5 + Math.random() * 8) + 'px';
+                piece.style.height = (5 + Math.random() * 8) + 'px';
+                piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+                piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                piece.style.animationDuration = (2 + Math.random() * 3) + 's';
+                piece.style.animationDelay = (Math.random() * 2) + 's';
+                piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confettiContainer.appendChild(piece);
+            }
+            // Clean up confetti after animation
+            setTimeout(() => {
+                confettiContainer.innerHTML = '';
+            }, 6000);
+        }
+
+        // ===== RESET =====
+        function resetCake() {
+            hasCut = false;
+            cutProgress = 0;
+            knife.style.transform = 'rotate(-30deg) translateX(0)';
+            cutLine.style.width = '0%';
+            cutLine.classList.remove('active');
+            birthdayReveal.classList.remove('show');
+            confettiContainer.innerHTML = '';
+            knife.style.cursor = 'grab';
+        }
+    </script>
+</body>
+</html>
